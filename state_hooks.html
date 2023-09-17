@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Belajar react</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+
+      function Header({ name }) {
+        return <h1>Belajar react Bareng {name ? name : "bambang"} 🚀</h1>;
+      }
+
+      function HomePage() {
+        const students = ["maulana", "ibnu", "sahban"];
+        const [likes, setLikes] = React.useState(0);
+        const [likes1, setLikes1] = React.useState(0);
+
+        function handleClick() {
+          setLikes(likes + 1);
+        }
+
+        function plusClick() {
+          setLikes1(likes1 + 1);
+        }
+
+        function minClick() {
+          setLikes1(likes1 - 1);
+        }
+
+        function resetClick() {
+          setLikes1(likes1 - likes1);
+        }
+
+        return (
+          <>
+            <Header name="maulana" />
+            <ul>
+              {students.map((student) => (
+                <li key={student}>{student}</li>
+              ))}
+            </ul>
+            <button onClick={handleClick}>like ({likes}) </button>
+            <br />
+            <hr />
+            <br />
+            <button onClick={plusClick}> + </button>
+            {likes1}
+            <button onClick={minClick}> - </button>
+            <br />
+            <button onClick={resetClick}>Reset</button>
+          </>
+        );
+      }
+
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
+
+<!-- <Header />
+<>
+   <h1 className="maulana">Belajar React Bareng Maulana 🚀</h1>
+   <p >maulanaibnusahban</p>
+ </> -->
